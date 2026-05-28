@@ -6,605 +6,549 @@
 <title>Everlight Voice by Tri | Voiceover Artist</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --black: #080808;
-    --deep: #0d0d0d;
-    --teal: #00b5b5;
-    --teal-light: #00d4d4;
-    --teal-dark: #007a7a;
-    --silver: #c0c0c0;
-    --silver-light: #e8e8e8;
-    --silver-dim: #888888;
-    --rhinestone: #e8e8ff;
-    --gold-accent: #d4af7a;
-  }
+:root {
+  --black: #080808;
+  --teal: #00b5b5;
+  --teal-light: #00d4d4;
+  --teal-dark: #007a7a;
+  --silver: #c0c0c0;
+  --silver-light: #e8e8e8;
+  --silver-dim: #888888;
+  --rhinestone: #e8e8ff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--silver-light);
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* Sparkle background */
+.sparkle-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.sparkle {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: var(--rhinestone);
+  border-radius: 50%;
+  animation: twinkle var(--dur) ease-in-out infinite;
+  opacity: 0;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 0.8; transform: scale(1.5); }
+}
 
-  html { scroll-behavior: smooth; }
+/* Nav */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(8,8,8,0.95), transparent);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: var(--silver-light);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--teal); }
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--silver-dim);
+  text-decoration: none;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+.nav-links a:hover { color: var(--teal); }
 
-  body {
-    background: var(--black);
-    color: var(--silver-light);
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-    cursor: none;
-  }
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
+  padding: 120px 24px 80px;
+}
+.hero-content { max-width: 800px; position: relative; }
+.hero-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  animation: fadeUp 0.8s ease 0.5s both;
+}
+.hero-title .by {
+  font-style: italic;
+  font-size: 0.45em;
+  color: var(--silver-dim);
+  display: block;
+  letter-spacing: 0.2em;
+  margin-top: 8px;
+}
+.hero-title .tri { color: var(--teal); display: block; }
+.hero-divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--teal), transparent);
+  margin: 32px auto;
+  animation: fadeUp 0.8s ease 0.7s both;
+}
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--silver);
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  margin-bottom: 48px;
+  animation: fadeUp 0.8s ease 0.9s both;
+}
+.hero-cta {
+  display: inline-flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.8s ease 1.1s both;
+}
+.btn-primary {
+  padding: 14px 36px;
+  background: transparent;
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary:hover { background: var(--teal); color: var(--black); }
+.btn-secondary {
+  padding: 14px 36px;
+  background: transparent;
+  border: 1px solid var(--silver-dim);
+  color: var(--silver-dim);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn-secondary:hover { border-color: var(--silver-light); color: var(--silver-light); }
 
-  /* Custom cursor */
-  .cursor {
-    width: 8px; height: 8px;
-    background: var(--teal);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease;
-    mix-blend-mode: screen;
-  }
-  .cursor-ring {
-    width: 32px; height: 32px;
-    border: 1px solid var(--teal);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    transition: all 0.15s ease;
-    opacity: 0.5;
-    mix-blend-mode: screen;
-  }
+/* Rhinestone line */
+.rhinestone-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--silver-dim), var(--rhinestone), var(--teal), var(--rhinestone), var(--silver-dim), transparent);
+  position: relative;
+  z-index: 1;
+}
 
-  /* Rhinestone sparkle background */
-  .sparkle-bg {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .sparkle {
-    position: absolute;
-    width: 2px; height: 2px;
-    background: var(--rhinestone);
-    border-radius: 50%;
-    animation: twinkle var(--dur) ease-in-out infinite;
-    opacity: 0;
-  }
-  @keyframes twinkle {
-    0%, 100% { opacity: 0; transform: scale(0.5); }
-    50% { opacity: 0.8; transform: scale(1.5); }
-  }
+/* Sections */
+.section-wrap {
+  position: relative;
+  z-index: 1;
+  padding: 100px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  color: var(--silver-light);
+  margin-bottom: 40px;
+  line-height: 1.1;
+}
+.section-title em { font-style: italic; color: var(--teal); }
 
-  /* Nav */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 24px 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(to bottom, rgba(8,8,8,0.95), transparent);
-  }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 300;
-    letter-spacing: 0.15em;
-    color: var(--silver-light);
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--teal); }
-  .nav-links {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-  }
-  .nav-links a {
-    color: var(--silver-dim);
-    text-decoration: none;
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-  }
-  .nav-links a:hover { color: var(--teal); }
+/* About */
+.about-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.about-photo img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--teal);
+  box-shadow: 0 0 30px rgba(0,181,181,0.3);
+}
+.about-text p {
+  font-size: 0.9rem;
+  line-height: 2;
+  color: var(--silver);
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+}
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.stat-box {
+  background: rgba(0,181,181,0.04);
+  border: 1px solid rgba(0,181,181,0.15);
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.stat-box:hover { background: rgba(0,181,181,0.08); border-color: var(--teal); }
+.stat-icon { font-size: 1.5rem; color: var(--teal); display: block; margin-bottom: 8px; }
+.stat-label { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--silver-dim); }
 
-  /* Hero */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    z-index: 1;
-    padding: 120px 24px 80px;
-  }
+/* Services */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+}
+.service-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(192,192,192,0.08);
+  padding: 48px 32px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(to right, transparent, var(--teal), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+.service-card:hover::before { transform: scaleX(1); }
+.service-card:hover { background: rgba(0,181,181,0.05); }
+.service-icon { font-size: 1.8rem; margin-bottom: 20px; display: block; }
+.service-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--silver-light);
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+.service-desc { font-size: 0.78rem; line-height: 1.9; color: var(--silver-dim); letter-spacing: 0.05em; }
 
-  .hero-content { max-width: 800px; position: relative; }
+/* Demos */
+.demos-bg {
+  background: rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 1;
+}
+.demo-player-wrap {
+  margin-bottom: 32px;
+}
+.demo-player-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0,181,181,0.2);
+}
+.demo-player-wrap iframe {
+  width: 100%;
+  border-radius: 4px;
+}
 
-  .hero-eyebrow {
-    font-size: 0.65rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 24px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.3s forwards;
-  }
+/* Platforms */
+.platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+}
+.platform-card {
+  border: 1px solid rgba(192,192,192,0.1);
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.01);
+}
+.platform-card:hover { border-color: var(--teal); background: rgba(0,181,181,0.04); }
+.platform-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: var(--silver-light);
+  margin-bottom: 8px;
+}
+.platform-type { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+.platform-desc { font-size: 0.78rem; line-height: 1.8; color: var(--silver-dim); }
 
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.5rem, 8vw, 7rem);
-    font-weight: 300;
-    line-height: 1.0;
-    letter-spacing: 0.05em;
-    margin-bottom: 8px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.5s forwards;
-  }
-  .hero-title .by { 
-    font-style: italic; 
-    font-size: 0.45em; 
-    color: var(--silver-dim);
-    display: block;
-    letter-spacing: 0.2em;
-    margin-top: 8px;
-  }
-  .hero-title .tri {
-    color: var(--teal);
-    display: block;
-  }
+/* Contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.contact-info p { font-size: 0.85rem; line-height: 2; color: var(--silver); margin-bottom: 32px; }
+.contact-detail { display: flex; flex-direction: column; gap: 16px; }
+.contact-line { display: flex; align-items: center; gap: 16px; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--silver-dim); }
+.contact-line .icon { color: var(--teal); font-size: 1rem; }
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(192,192,192,0.15);
+  padding: 16px 20px;
+  color: var(--silver-light);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  outline: none;
+  transition: border-color 0.3s ease;
+  resize: none;
+}
+.contact-form input:focus,
+.contact-form textarea:focus { border-color: var(--teal); }
+.contact-form input::placeholder,
+.contact-form textarea::placeholder { color: var(--silver-dim); }
 
-  .hero-divider {
-    width: 80px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--teal), transparent);
-    margin: 32px auto;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.7s forwards;
-  }
+/* Footer */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 48px;
+  border-top: 1px solid rgba(192,192,192,0.08);
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: var(--silver);
+  margin-bottom: 16px;
+}
+.footer-logo span { color: var(--teal); }
+.footer-copy { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--silver-dim); text-transform: uppercase; }
 
-  .hero-tagline {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    color: var(--silver);
-    letter-spacing: 0.05em;
-    line-height: 1.6;
-    margin-bottom: 48px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.9s forwards;
-  }
+/* Glow orbs */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.07;
+}
+.orb-1 { width: 400px; height: 400px; background: var(--teal); top: -100px; right: -100px; }
+.orb-2 { width: 300px; height: 300px; background: var(--teal-dark); bottom: 20%; left: -80px; }
 
-  .hero-cta {
-    display: inline-flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 1.1s forwards;
-  }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 
-  .btn-primary {
-    padding: 14px 36px;
-    background: transparent;
-    border: 1px solid var(--teal);
-    color: var(--teal);
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: var(--teal);
-    transition: left 0.3s ease;
-    z-index: -1;
-  }
-  .btn-primary:hover { color: var(--black); }
-  .btn-primary:hover::before { left: 0; }
-
-  .btn-secondary {
-    padding: 14px 36px;
-    background: transparent;
-    border: 1px solid var(--silver-dim);
-    color: var(--silver-dim);
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  .btn-secondary:hover { border-color: var(--silver-light); color: var(--silver-light); }
-
-  /* Rhinestone border accent */
-  .rhinestone-line {
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--silver-dim), var(--rhinestone), var(--teal), var(--rhinestone), var(--silver-dim), transparent);
-    margin: 0;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Sections */
-  section {
-    position: relative;
-    z-index: 1;
-    padding: 100px 48px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 16px;
-  }
-
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 300;
-    color: var(--silver-light);
-    margin-bottom: 40px;
-    line-height: 1.1;
-  }
-  .section-title em { font-style: italic; color: var(--teal); }
-
-  /* About */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-  .about-text p {
-    font-size: 0.9rem;
-    line-height: 2;
-    color: var(--silver);
-    margin-bottom: 20px;
-    letter-spacing: 0.05em;
-  }
-  .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-  .stat-box {
-    background: rgba(0, 181, 181, 0.04);
-    border: 1px solid rgba(0, 181, 181, 0.15);
-    padding: 32px 24px;
-    text-align: center;
-    transition: all 0.3s ease;
-  }
-  .stat-box:hover {
-    background: rgba(0, 181, 181, 0.08);
-    border-color: var(--teal);
-  }
-  .stat-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    color: var(--teal);
-    display: block;
-    margin-bottom: 8px;
-  }
-  .stat-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--silver-dim);
-  }
-
-  /* Services */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-    margin-top: 48px;
-  }
-  .service-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(192,192,192,0.08);
-    padding: 48px 32px;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 2px;
-    background: linear-gradient(to right, transparent, var(--teal), transparent);
-    transform: scaleX(0);
-    transition: transform 0.4s ease;
-  }
-  .service-card:hover::before { transform: scaleX(1); }
-  .service-card:hover { background: rgba(0, 181, 181, 0.05); }
-
-  .service-icon {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    display: block;
-  }
-  .service-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    color: var(--silver-light);
-    margin-bottom: 12px;
-    font-weight: 400;
-  }
-  .service-desc {
-    font-size: 0.78rem;
-    line-height: 1.9;
-    color: var(--silver-dim);
-    letter-spacing: 0.05em;
-  }
-
-  /* Demo player */
-  .demos-section { background: rgba(0,0,0,0.3); }
-  .demo-players {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    margin-top: 48px;
-  }
-  .demo-item {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    padding: 24px 32px;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(192,192,192,0.08);
-    transition: all 0.3s ease;
-  }
-  .demo-item:hover { background: rgba(0, 181, 181, 0.05); border-color: rgba(0,181,181,0.3); }
-  .demo-play {
-    width: 44px; height: 44px;
-    border: 1px solid var(--teal);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: all 0.3s ease;
-    background: transparent;
-    color: var(--teal);
-    font-size: 1rem;
-  }
-  .demo-play:hover { background: var(--teal); color: var(--black); }
-  .demo-info { flex: 1; }
-  .demo-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    color: var(--silver-light);
-    margin-bottom: 4px;
-  }
-  .demo-subtitle {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--silver-dim);
-  }
-  .demo-duration {
-    font-size: 0.7rem;
-    color: var(--silver-dim);
-    letter-spacing: 0.1em;
-  }
-  .demo-waveform {
-    flex: 1;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    gap: 2px;
-  }
-  .wave-bar {
-    width: 3px;
-    background: rgba(0,181,181,0.3);
-    border-radius: 2px;
-    animation: wave var(--h) ease-in-out infinite alternate;
-  }
-  @keyframes wave {
-    from { height: 4px; }
-    to { height: var(--max); }
-  }
-
-  /* Platforms */
-  .platforms-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-    margin-top: 48px;
-  }
-  .platform-card {
-    border: 1px solid rgba(192,192,192,0.1);
-    padding: 40px 32px;
-    text-align: center;
-    transition: all 0.3s ease;
-    background: rgba(255,255,255,0.01);
-  }
-  .platform-card:hover { border-color: var(--teal); background: rgba(0,181,181,0.04); }
-  .platform-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    color: var(--silver-light);
-    margin-bottom: 8px;
-  }
-  .platform-type {
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 16px;
-  }
-  .platform-desc {
-    font-size: 0.78rem;
-    line-height: 1.8;
-    color: var(--silver-dim);
-  }
-
-  /* Contact */
-  .contact-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-  .contact-info p {
-    font-size: 0.85rem;
-    line-height: 2;
-    color: var(--silver);
-    margin-bottom: 32px;
-  }
-  .contact-detail {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .contact-line {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    color: var(--silver-dim);
-  }
-  .contact-line span:first-child { color: var(--teal); font-size: 1rem; }
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(192,192,192,0.15);
-    padding: 16px 20px;
-    color: var(--silver-light);
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    outline: none;
-    transition: border-color 0.3s ease;
-    resize: none;
-  }
-  .form-group input:focus,
-  .form-group textarea:focus { border-color: var(--teal); }
-  .form-group input::placeholder,
-  .form-group textarea::placeholder { color: var(--silver-dim); }
-
-  /* Footer */
-  footer {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 48px;
-    border-top: 1px solid rgba(192,192,192,0.08);
-  }
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    color: var(--silver);
-    margin-bottom: 16px;
-  }
-  .footer-logo span { color: var(--teal); }
-  .footer-copy {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    color: var(--silver-dim);
-    text-transform: uppercase;
-  }
-
-  /* Animations */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-  /* Teal glow orbs */
-  .orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(80px);
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.07;
-  }
-  .orb-1 { width: 400px; height: 400px; background: var(--teal); top: -100px; right: -100px; }
-  .orb-2 { width: 300px; height: 300px; background: var(--teal-dark); bottom: 20%; left: -80px; }
-
-  @media (max-width: 768px) {
-    nav { padding: 20px 24px; }
-    .nav-links { display: none; }
-    section { padding: 60px 24px; }
-    .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
-    .services-grid, .platforms-grid { grid-template-columns: 1fr; }
-    .about-stats { grid-template-columns: 1fr 1fr; }
-  }
+@media (max-width: 768px) {
+  nav { padding: 20px 24px; }
+  .nav-links { display: none; }
+  .section-wrap { padding: 60px 24px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo { text-align: center; }
+  .services-grid, .platforms-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+}
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- Sparkle background -->
 <div class="sparkle-bg" id="sparkleBg"></div>
-
-<!-- Glow orbs -->
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 
-<!-- Navigation -->
+<!-- Nav -->
 <nav>
   <a href="#" class="nav-logo">Everlight<span>Voice</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#demos">Demos</a></li>
-    <div style="margin-bottom: 24px;">
-<p style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal); margin-bottom:12px;">Commercial Demo</p>
-<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2327209745&color=%2300b5b5&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe>
+    <li><a href="#platforms">Platforms</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Voiceover Artist · Singer · Storyteller</p>
+    <h1 class="hero-title">
+      Everlight Voice
+      <span class="by">by</span>
+      <span class="tri">Tri</span>
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">
+      Where a singer's soul meets the spoken word.<br>
+      Warm. Soulful. Unforgettable.
+    </p>
+    <div class="hero-cta">
+      <a href="#demos" class="btn-primary">Listen to Demos</a>
+      <a href="#contact" class="btn-secondary">Book a Session</a>
+    </div>
+  </div>
 </div>
-<div style="margin-bottom: 24px;">
-<p style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal); margin-bottom:12px;">Narration Demo</p>
-<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2327226128&color=%2300b5b5&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe>
-</div>
-        
+
+<div class="rhinestone-line"></div>
+
+<!-- About -->
+<section id="about">
+  <div class="section-wrap fade-in">
+    <p class="section-label">About Tri</p>
+    <h2 class="section-title">A voice born from <em>music &amp; soul</em></h2>
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="profile.jpg" alt="Tri - Everlight Voice by Tri">
+      </div>
+      <div class="about-text">
+        <p>I'm Tri — a female voiceover artist with a warm, conversational tone and bright, energetic delivery rooted in years of Gospel and R&amp;B/Soul singing. My background as a church and choir singer gives my voice something you can't manufacture: natural breath control, dynamic range, emotional depth, and an instinctive sense of rhythm and pacing.</p>
+        <p>I am currently pursuing a degree in Digital Media with a concentration in Audio/Video Production — and I bring that same commitment to learning and growing to every voiceover project I take on.</p>
+        <p>I record from my professional home studio and bring the same dedication to a 15-second commercial as I do to a full-length audiobook. When I set my mind to something — I succeed.</p>
+        <p><em>Singer. Student. Storyteller. Building something real.</em></p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-box">
+          <span class="stat-icon">✦</span>
+          <span class="stat-label">Gospel &amp; R&amp;B Singer</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-icon">✦</span>
+          <span class="stat-label">Home Studio</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-icon">✦</span>
+          <span class="stat-label">Broadcast Quality Audio</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-icon">✦</span>
+          <span class="stat-label">Fast Turnaround</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <div class="rhinestone-line"></div>
 
+<!-- Services -->
+<section id="services">
+  <div class="section-wrap fade-in">
+    <p class="section-label">What I Do</p>
+    <h2 class="section-title">Voice services <em>crafted with care</em></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🎙</span>
+        <h3 class="service-name">Commercial Voiceover</h3>
+        <p class="service-desc">From 15-second radio spots to full broadcast campaigns. Warm, energetic, and trustworthy delivery that connects your brand with real people.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📖</span>
+        <h3 class="service-name">Audiobook Narration</h3>
+        <p class="service-desc">Bring your manuscript to life with a narrator who understands emotional depth and pacing. Specializing in inspirational, faith-based, self-help, and women's fiction.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💼</span>
+        <h3 class="service-name">Promotional &amp; Corporate</h3>
+        <p class="service-desc">Professional, polished narration for e-learning courses, corporate training, explainer videos, and promotional content. Clear, warm, and authoritative delivery.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🙏</span>
+        <h3 class="service-name">Inspirational &amp; Faith-Based</h3>
+        <p class="service-desc">Rooted in Gospel and R&amp;B/Soul, I bring genuine heart and spiritual depth to faith-based audiobooks, devotionals, sermons, and inspirational content.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rhinestone-line"></div>
+
+<!-- Demos -->
+<div id="demos" class="demos-bg">
+  <div class="section-wrap fade-in">
+    <p class="section-label">Listen</p>
+    <h2 class="section-title">Demo <em>reels</em></h2>
+
+    <div class="demo-player-wrap">
+      <p class="demo-player-label">Commercial Demo — Variety Reel</p>
+      <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2327209745&color=%2300b5b5&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe>
+    </div>
+
+    <div class="demo-player-wrap">
+      <p class="demo-player-label">Narration Demo — Mix Style</p>
+      <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2327226128&color=%2300b5b5&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe>
+    </div>
+
+  </div>
+</div>
+
+<div class="rhinestone-line"></div>
+
 <!-- Platforms -->
 <section id="platforms">
-  <div class="fade-in">
+  <div class="section-wrap fade-in">
     <p class="section-label">Find Me On</p>
     <h2 class="section-title">Booking <em>platforms</em></h2>
     <div class="platforms-grid">
@@ -615,8 +559,8 @@
       </div>
       <div class="platform-card">
         <div class="platform-name">Voice123</div>
-        <div class="platform-type">Commercials & More</div>
-        <p class="platform-desc">Available for commercial, narration, and character voice projects across all industries.</p>
+        <div class="platform-type">Commercials &amp; More</div>
+        <p class="platform-desc">Available for commercial, narration, and promotional voice projects across all industries.</p>
       </div>
       <div class="platform-card">
         <div class="platform-name">Voices.com</div>
@@ -631,40 +575,34 @@
 
 <!-- Contact -->
 <section id="contact">
-  <div class="contact-wrapper fade-in">
-    <div class="contact-info">
-      <p class="section-label">Get In Touch</p>
-      <h2 class="section-title">Let's create something <em>extraordinary</em></h2>
-      <p>Whether you have a project in mind or just want to hear more, I'd love to connect. Every project — large or small — gets my full attention and best work.</p>
-      <div class="contact-detail">
-        <div class="contact-line">
-          <span>✦</span>
-          <span>everlightvoicebytri.github.io</span>
-        </div>
-        <div class="contact-line">
-          <span>✦</span>
-          <span>Available for bookings via ACX · Voice123 · Voices.com</span>
-        </div>
-        <div class="contact-line">
-          <span>✦</span>
-          <span>Also find me on YouTube: @EverlightByTri</span>
+  <div class="section-wrap fade-in">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section-label">Get In Touch</p>
+        <h2 class="section-title">Let's create something <em>extraordinary</em></h2>
+        <p>Whether you have a project in mind or just want to hear more, I'd love to connect. Every project — large or small — gets my full attention and best work.</p>
+        <div class="contact-detail">
+          <div class="contact-line">
+            <span class="icon">✦</span>
+            <span>everlightvoicebytri.github.io</span>
+          </div>
+          <div class="contact-line">
+            <span class="icon">✦</span>
+            <span>Available for bookings via ACX · Voice123 · Voices.com</span>
+          </div>
+          <div class="contact-line">
+            <span class="icon">✦</span>
+            <span>Also find me on YouTube: @EverlightByTri</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="contact-form">
-      <div class="form-group">
+      <div class="contact-form">
         <input type="text" placeholder="Your Name">
-      </div>
-      <div class="form-group">
         <input type="email" placeholder="Your Email">
-      </div>
-      <div class="form-group">
         <input type="text" placeholder="Project Type">
-      </div>
-      <div class="form-group">
         <textarea rows="5" placeholder="Tell me about your project..."></textarea>
+        <a href="#" class="btn-primary" style="text-align:center; display:block;">Send Message</a>
       </div>
-      <a href="#" class="btn-primary" style="text-align:center;">Send Message</a>
     </div>
   </div>
 </section>
@@ -672,60 +610,27 @@
 <!-- Footer -->
 <footer>
   <div class="footer-logo">Everlight<span>Voice</span> by Tri</div>
-  <p class="footer-copy">© 2026 everlightvoicebytri.github.io · All Rights Reserved</p>
+  <p class="footer-copy">© 2026 EverlightVoiceByTri · All Rights Reserved</p>
 </footer>
 
 <script>
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx - 4 + 'px';
-    cursor.style.top = my - 4 + 'px';
-  });
-  function animRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) *.12;
-    ring.style.left = rx - 16 + 'px';
-    ring.style.top = ry - 16 + 'px';
-    requestAnimationFrame(animRing);
-  }
-  animRing();
+// Sparkles
+const bg = document.getElementById('sparkleBg');
+for (let i = 0; i < 80; i++) {
+  const s = document.createElement('div');
+  s.className = 'sparkle';
+  s.style.left = Math.random() * 100 + '%';
+  s.style.top = Math.random() * 100 + '%';
+  s.style.setProperty('--dur', (2 + Math.random() * 4) + 's');
+  s.style.animationDelay = (Math.random() * 5) + 's';
+  bg.appendChild(s);
+}
 
-  // Sparkles
-  const bg = document.getElementById('sparkleBg');
-  for (let i = 0; i < 80; i++) {
-    const s = document.createElement('div');
-    s.className = 'sparkle';
-    s.style.left = Math.random() * 100 + '%';
-    s.style.top = Math.random() * 100 + '%';
-    s.style.setProperty('--dur', (2 + Math.random() * 4) + 's');
-    s.style.animationDelay = (Math.random() * 5) + 's';
-    bg.appendChild(s);
-  }
-
-  // Waveforms
-  ['wave1','wave2','wave3'].forEach(id => {
-    const el = document.getElementById(id);
-    for (let i = 0; i < 40; i++) {
-      const bar = document.createElement('div');
-      bar.className = 'wave-bar';
-      const h = 4 + Math.random() * 24;
-      bar.style.setProperty('--max', h + 'px');
-      bar.style.setProperty('--h', (0.4 + Math.random() * 0.8) + 's');
-      bar.style.animationDelay = (Math.random() * 1) + 's';
-      bar.style.height = h + 'px';
-      el.appendChild(bar);
-    }
-  });
-
-  // Scroll fade-in
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+// Scroll fade-in
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
